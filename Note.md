@@ -21,3 +21,7 @@ And more V's
 - Relational Databases: SQL Server, PostgreSQL, SQLite, MySQL, Azure SQL
 - Non-relational Databases: Azure Cosmos DB
 - Cloud Databases: Any data that is run in a cloud using IAAS, DAAS, PAAS
+<br>
+<br>
+# LEC 2  
+  

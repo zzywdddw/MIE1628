@@ -83,10 +83,52 @@ Hadoop 背后的核心思想是：与其把数据移动到计算节点，不如�
 - 在传统系统中：数据通常会被传送到计算服务器 → 慢 & 成本高  
 - 在 Hadoop 中：数据存在哪里，计算就在哪里执行 → 节省带宽、提升效率
 - 这就是所谓的“计算向数据靠拢”原则（data locality）
-### Scalability， Scaling， Reliability  
+### Scalability， Reliability  
 ### New Approach to Data : Keep all the Data  
 新时代的大数据理念是“保留一切数据”，通过灵活的读取方式和更丰富的分析，利用细粒度数据获得更优的洞察和结果。  
-# LEC 2  Part3：Hadoop Distributed File System
+# LEC 2  Part3：Hadoop Distributed File System  
+### What is Hadoop?  
+- Hadoop is a framework that allows you to store large volume of data on several node machines
+- Hadoop also helps in processing data in a parallel manner
+### What is HDFS?  
+- HDFS is the storage layer of Hadoop that stores data in multiple data servers
+- Data is divided into multiple blocks and Stores them over multiple nodes of cluster
+### HDFS Blocks  
+一个block可以存128MB的数据。 Ex：一个380MB的文件会被存到3个Block里，分别是Block1（128MB),Block2（128MB), Block3（124MB)  
+### NameNodeand DataNode  
+NameNode（主节点 / 元数据管理器）:  
+- 负责管理和协调所有 DataNode并且保存所有元数据，包括：
+   1. 文件被切成了哪些 block
+   2. 每个 block 存在哪些 DataNode 上
+   3. 文件大小、访问权限、目录结构等信息
+- 定期接收所有 DataNode 发来的：
+   1. 心跳（heartbeat）：确认节点是否在线
+   2. Block 报告：告知当前节点有哪些数据块
+ 
+DataNode（从节点 / 数据存储者）
+- 真正存储数据块（block）的地方。
+- 客户端读取文件 → DataNode 返回对应的数据块
+- 客户端上传文件 → DataNode 接收并存储分配的块
+# LEC 2  Part4：Hadoop MapReduce  
+### Intro  
+MapReduce 是一种编程模型及其实现，用于处理和生成大规模数据集。  
+用户定义一个 map 函数来处理键/值对，生成中间的键/值对，再通过 reduce 函数对相同键的中间值进行合并。  
+- Map 阶段：处理输入数据，生成中间结果：
+
+  例子：("doc1", "hello world") → [("hello", 1), ("world", 1)]
+
+- Reduce 阶段：聚合相同 key 的值：
+
+  例子：("hello", [1,1,1]) → ("hello", 3)
+  <br>
+![image](https://github.com/user-attachments/assets/a555b396-cb9f-4e2a-bfe2-08807df80783)
+![image](https://github.com/user-attachments/assets/ba55ce90-f057-4015-adc9-2696ee34e9bf)
+
+
+
+
+
+
 
 
 

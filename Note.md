@@ -124,7 +124,13 @@ MapReduce 是一种编程模型及其实现，用于处理和生成大规模数�
 ![image](https://github.com/user-attachments/assets/a555b396-cb9f-4e2a-bfe2-08807df80783)
 ![image](https://github.com/user-attachments/assets/ba55ce90-f057-4015-adc9-2696ee34e9bf)
 <br>
-# LEC 3  Part4：Hadoop MapReduce  
+
+# LEC 3  Part1: Introduction to Spark  
+### Intro  
+传统 MapReduce 的执行流程：Map → Shuffle → Reduce. 每一步之间必须将中间结果写入磁盘以实现容错. 这就导致了：I/O 成本高(写磁盘慢), 性能低下, 系统不够灵活  
+
+RDD（Resilient Distributed Dataset） 是 Spark 的最底层编程模型。它是一种 弹性分布式数据集，支持 容错、并行计算 和 分布式内存存储。  
+![image](https://github.com/user-attachments/assets/2daded20-a11e-434c-bb96-6d2c829be4af)
 
 
 

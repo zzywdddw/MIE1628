@@ -125,7 +125,7 @@ MapReduce 是一种编程模型及其实现，用于处理和生成大规模数�
 ![image](https://github.com/user-attachments/assets/ba55ce90-f057-4015-adc9-2696ee34e9bf)
 <br>
 
-# LEC 3  Part1: Introduction to Spark  
+# LEC 3  
 ### Intro  
 传统 MapReduce 的执行流程：Map → Shuffle → Reduce. 每一步之间必须将中间结果写入磁盘以实现容错. 这就导致了：I/O 成本高(写磁盘慢), 性能低下, 系统不够灵活  
 
@@ -164,7 +164,11 @@ result = rddA.subtract(rddB_flat)
 # Trigger execution
 print(result.collect())
 ```
-![image](https://github.com/user-attachments/assets/7b93e5fb-36fa-402e-8ca0-b2bf785fce56)
+![image](https://github.com/user-attachments/assets/7b93e5fb-36fa-402e-8ca0-b2bf785fce56)  
+<br>
+<br>
+
+# LEC 4
 
 
 

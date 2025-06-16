@@ -130,7 +130,44 @@ MapReduce 是一种编程模型及其实现，用于处理和生成大规模数�
 传统 MapReduce 的执行流程：Map → Shuffle → Reduce. 每一步之间必须将中间结果写入磁盘以实现容错. 这就导致了：I/O 成本高(写磁盘慢), 性能低下, 系统不够灵活  
 
 RDD（Resilient Distributed Dataset） 是 Spark 的最底层编程模型。它是一种 弹性分布式数据集，支持 容错、并行计算 和 分布式内存存储。  
-![image](https://github.com/user-attachments/assets/2daded20-a11e-434c-bb96-6d2c829be4af)
+![image](https://github.com/user-attachments/assets/2daded20-a11e-434c-bb96-6d2c829be4af)  
+### RDD,Spark,Hadoop的关系  
+- Hadoop 是最早的大数据平台,包含两个核心组件：
+    - HDFS：分布式文件系统，用来存储大数据
+    - MapReduce：分布式计算模型，执行慢，每一步都写磁盘
+    - 缺点：写磁盘太频繁，开发复杂，速度
+- Spark 是对 Hadoop MapReduce 的改进. Spark 是一个 通用的分布式计算框架, 它可以直接：
+    - 读取 HDFS 中的数据
+    - 也能在 Hadoop YARN 上运行任务
+    - 优势：把中间结果放到内存里（不像 MapReduce 写磁盘）; 支持批处理、流处理、机器学习等各种任务
+- RDD 是 Spark 的核心数据抽象
+
+### DAG  
+DAG stands for Directed Acyclic Graph.  
+DAG 就是 Spark 在背后画的一张“任务流程图”，让代码能高效、有顺序、不会出错地在多个机器上执行。
+```
+from pyspark import SparkContext
+
+sc = SparkContext("local", "DAG Example")
+
+# Stage 0: parallelize + subtract input
+rddA = sc.parallelize([1, 2, 3, 4])      # parallelize A
+
+# Stage 1: another parallelize + transformations
+rddB = sc.parallelize([3, 4, 5, 6])      # parallelize B
+rddB_mapped = rddB.map(lambda x: x * 2) # map
+rddB_flat = rddB_mapped.flatMap(lambda x: [x, x + 1]) # flatMap
+
+# Stage 2: subtract between two RDDs
+result = rddA.subtract(rddB_flat)
+
+# Trigger execution
+print(result.collect())
+```
+![image](https://github.com/user-attachments/assets/7b93e5fb-36fa-402e-8ca0-b2bf785fce56)
+
+
+
 
 
 

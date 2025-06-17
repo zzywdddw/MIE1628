@@ -168,7 +168,35 @@ print(result.collect())
 <br>
 <br>
 
-# LEC 4
+# LEC 4  Part1：Recommendation system  
+### Types of Recommendation system  
+![image](https://github.com/user-attachments/assets/f77a8103-c1be-402d-9ef7-953a360ae62e)  
+![image](https://github.com/user-attachments/assets/b1a1e1ba-df15-4958-bd3b-b80e184ff0fc)  
+### ALS  
+Alternating Least Squares（ALS，交替最小二乘法）  
+![image](https://github.com/user-attachments/assets/18b63642-4cce-4b91-a5e7-36c757c523cf)  
+左图：原始评分矩阵（很多空缺）， 很多格子是 BLANK（未知），表示用户没看过或没打分。目标：用 ALS 算法 填补这些空缺，即预测评分。  
+![image](https://github.com/user-attachments/assets/327e9ffe-1dad-43a7-99f3-535867f996f6)  
+1. 输入：评分矩阵 R（m × n）
+     - 其中 m 是用户数量，n 是物品数量。
+     - 大多数元素是缺失的（即未评分）。
+2. 矩阵分解目标，将 R 分解成两个矩阵的乘积：
+     - 用户矩阵 U（m × k）：每个用户在 k 个隐因子上的兴趣强度；
+     - 物品矩阵 P（n × k）：每个物品在 k 个隐因子上的属性特征；
+     - 所以：R ≈ U × Pᵗ。
+3. 损失函数（目标函数）：
+     - 第一项是预测误差；
+     - 第二项是正则化，用于防止过拟合；
+     - 只对已知评分 R_ij 做损失计算。
+4. 交替优化（Alternating）：
+     - 固定 P，优化 U（相当于解一个线性最小二乘问题）；
+     - 然后固定 U，优化 P；
+     - 不断交替，直到误差收敛。
+
+
+
+
+
 
 
 

@@ -197,7 +197,11 @@ Alternating Least Squares（ALS，交替最小二乘法）
 
 # LEC 4  Part2：Databricks  
 Databricks 是一个基于 Apache Spark 构建的云端数据分析平台。它把 Spark 封装在一个漂亮、易用的界面中，并添加了团队协作、云存储、机器学习等高级功能。  
-简单的来说，Databricks = Spark + 云平台 + 可视化界面 + ML 工具 + 多语言支持 + 团队协作功能
+简单的来说，Databricks = Spark + 云平台 + 可视化界面 + ML 工具 + 多语言支持 + 团队协作功能  
+<br>
+<br>
+
+# LEC 5  Part1：Recommendation system  
 
 
 
